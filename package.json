@@ -1,0 +1,15 @@
+{
+  "name": "clop-browser",
+  "version": "0.1.0",
+  "description": "VOID Browser by HaiCLOP Labs — Gen-Z Chromium-based desktop browser",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging"
+  },
+  "author": "HaiCLOP Labs",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
