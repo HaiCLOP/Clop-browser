@@ -431,6 +431,10 @@ function navigateActiveTab(rawUrl) {
 
   tab.url = url;
   tab.view.webContents.loadURL(url);
+
+  // Immediately tell renderer to hide new tab page and update URL
+  sendNavState(activeTabId);
+  sendTabUpdate(activeTabId);
 }
 
 function updateNavState(tabId, url) {
