@@ -1847,7 +1847,12 @@
         // AI toggle placeholder — overridden by renderer.js with layout notification
         function toggleAI() {
             const panel = document.getElementById('ai-panel');
-            panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+            const isVisible = panel.style.display !== 'none';
+            panel.style.display = isVisible ? 'none' : 'flex';
+            // Notify main process to resize WebContentsView
+            if (window.clop && window.clop.setAIPanelVisible) {
+                window.clop.setAIPanelVisible(!isVisible);
+            }
         }
 
         // AI mode tabs
