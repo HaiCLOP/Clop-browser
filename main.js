@@ -241,6 +241,16 @@ function createTab(url = null, silent = false) {
     }
   });
 
+  // Force dark mode preference on each tab via CDP
+  try {
+    view.webContents.debugger.attach('1.3');
+    view.webContents.debugger.sendCommand('Emulation.setEmulatedMedia', {
+      features: [{ name: 'prefers-color-scheme', value: 'dark' }]
+    });
+  } catch (e) {
+    // Debugger already attached or not available
+  }
+
   // ── Web contents event listeners ──
 
   view.webContents.on('page-title-updated', (_event, title) => {
